@@ -67,7 +67,9 @@ const Login = () => {
       </form>
 
       <p>New to this website? Please <Link to="/reg"> <button className='btn btn-link text-sm rounded-full '>Register</button></Link></p>
-
+        <button className='btn btn-link ' >
+          Google
+        </button>
     </div>
   </div>
 </div>

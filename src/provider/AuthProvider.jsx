@@ -1,9 +1,11 @@
 import  {  createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import auth from '../auth-int';
 
  export const AuthContext = createContext(null);
+
+ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({children}) => {
    
@@ -23,6 +25,14 @@ const signInUser = (email, password) =>{
 const logOut = () =>{
     setLoding(true);
     return signOut (auth);
+
+
+}
+
+
+const signInwithGoogle =()=>{
+    setLoding(true);
+    return signInWithPopup(auth, googleProvider);
 }
 
 //ovs state 
@@ -44,7 +54,8 @@ const authInfo = {user ,
     loding,
     createUser,
     signInUser,
-    logOut }
+    logOut,
+    signInwithGoogle }
 
 
 
